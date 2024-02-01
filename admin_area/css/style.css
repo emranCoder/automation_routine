@@ -1,0 +1,133 @@
+body {
+    font-size: 14px;
+    line-height: 1;
+    color: #333;
+}
+
+a {
+    color: #94a3b8;
+    text-decoration: none;
+}
+
+/***** Universal *****/
+.box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 1200;
+    height: 100%;
+}
+
+.right-box {
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    z-index: 1200;
+    height: 100%;
+    width: inherit;
+    padding: 0px 20px;
+    background-color: #f0f9ff;
+}
+
+.border-rounded {
+    border-radius: 10px;
+}
+
+.bg-white {
+    background-color: white !important;
+}
+
+.divider {
+    height: 1px;
+    border-radius: 5px;
+    width: 100%;
+    background-color: rgb(200, 200, 200);
+    margin: 10px 0px;
+}
+
+.box-title {
+    margin: 35px 0px;
+    color: #484848;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/***** End Universal *****/
+
+/***** Side Menu *****/
+.admin-box {
+    background-color: #94a3b835;
+    color: #94a3b8;
+    padding: 20px;
+    border-radius: 7px;
+    margin: 10px 0px;
+}
+
+
+.side-menu {
+    border-right: 1px solid rgb(242, 244, 247);
+    background-color: rgb(28, 37, 54);
+    width: inherit;
+    color: #94a3b8;
+    padding: 20px 30px;
+}
+
+.list-btn {
+    border-radius: 7px;
+    padding: 10px 10px;
+    cursor: pointer;
+    margin: 3px 0px;
+
+}
+
+.list-btn .link {
+    color: #94a3b8 !important;
+}
+
+.list-btn:hover {
+    background-color: #94a3b835;
+    color: rgb(241, 241, 241);
+}
+
+.active-list {
+    background-color: #94a3b835;
+    color: rgb(241, 241, 241);
+    font-weight: 600 !important;
+}
+
+/***** End Side Menu *****/
+
+/***** Home  *****/
+
+
+/***** End Home  *****/
+
+/***** Course *****/
+.add-field {
+    font-size: 16px;
+    padding: 10px 7px;
+    user-select: none;
+}
+
+.add-field:hover {
+    color: orange;
+}
+
+/***** End Course *****/
+
+
+
+
+
+/***** Responsive Design *****/
+@media only screen and (min-width: 992px) {}
+
+/***** End Responsive Design *****/
