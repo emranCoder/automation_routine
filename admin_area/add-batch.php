@@ -18,12 +18,23 @@ if (!(isset($_GET["addbatch"]) && $_GET["addbatch"] == 'true')) {
                     <h3 class="box-title">Add Batch</h3>
                     <div class="mb-3">
                         <label for="" class="form-label">Select Department</label>
-                        <select class="form-select" name="" id="">
-                            <option selected>Choose Department</option>
-                            <option>CSE</option>
-                            <option value="">BBA</option>
-                            <option value="">English</option>
-                            <option value="">Economica</option>
+                        <select class="form-select" name="deptName" id="" required>
+                            <option>Choose Department</option>
+                            <?php
+                            $selectQuery = "SELECT deptID,inShort  FROM `department`";
+                            $result = mysqli_query($conn, $selectQuery);
+                            $numRows = mysqli_num_rows($result);
+                            if ($numRows) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+
+                                    $shortForm = $row["inShort"];
+                                    echo '<option value="' . $shortForm . '">' . $shortForm . '</option>';
+                                }
+                            } else {
+                                echo '<option class="text-danger">Insert Department First</option>';
+                            }
+
+                            ?>
                         </select>
                     </div>
 
@@ -32,7 +43,8 @@ if (!(isset($_GET["addbatch"]) && $_GET["addbatch"] == 'true')) {
                             <label for="" class="form-label">Batch No</label>
                             <div class="mb-3">
                                 <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
-                                    placeholder="Course Name" />
+                                    placeholder="Batch Number" 
+                                    onkeypress="return event.charCode >= 48 && event.charCode <= 57"/>
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -45,10 +57,20 @@ if (!(isset($_GET["addbatch"]) && $_GET["addbatch"] == 'true')) {
                                         <span class="ms-3">to</span>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-3">
 
-                                    <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
-                                        placeholder=".." />
+                                <select class="form-select" name="roomType" id="">
+                                    <option selected>...</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                    <option value="E">E</option>
+                                    <option value="F">F</option>
+                                    <option value="G">G</option>
+                                    <option value="H">H</option>
+                                    <option value="I">I</option>
+                                    <option value="J">J</option>
+                                </select>
                                 </div>
                             </div>
                         </div>
@@ -58,7 +80,7 @@ if (!(isset($_GET["addbatch"]) && $_GET["addbatch"] == 'true')) {
                             <div class="mb-3">
                                 <label for="" class="form-label">Add Course</label>
                                 <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
-                                    placeholder="Type to add course.." />
+                                    placeholder="Type Course code (i.e. CSE 215).." />
                             </div>
                         </div>
                     </div>

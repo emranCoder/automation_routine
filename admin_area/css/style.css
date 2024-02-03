@@ -60,6 +60,29 @@ a {
     cursor: pointer;
 }
 
+.toast-custom {
+    position: fixed;
+    top: 3%;
+    right: 3%;
+}
+
+
+.bd-callout-warning {
+    --bd-callout-color: var(--bs-warning-text-emphasis);
+    --bd-callout-bg: var(--bs-warning-bg-subtle);
+    --bd-callout-border: var(--bs-warning-border-subtle);
+}
+
+.bd-callout {
+    --bs-link-color-rgb: var(--bd-callout-link);
+    --bs-code-color: var(--bd-callout-code-color);
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    color: var(--bd-callout-color, inherit);
+    background-color: var(--bd-callout-bg, var(--bs-gray-100));
+    border-left: 0.25rem solid var(--bd-callout-border, var(--bs-gray-300));
+}
+
 /***** End Universal *****/
 
 /***** Side Menu *****/
@@ -70,7 +93,6 @@ a {
     border-radius: 7px;
     margin: 10px 0px;
 }
-
 
 .side-menu {
     border-right: 1px solid rgb(242, 244, 247);
@@ -85,7 +107,6 @@ a {
     padding: 10px 10px;
     cursor: pointer;
     margin: 3px 0px;
-
 }
 
 .list-btn .link {
@@ -107,7 +128,6 @@ a {
 
 /***** Home  *****/
 
-
 /***** End Home  *****/
 
 /***** Course *****/
@@ -118,14 +138,10 @@ a {
 }
 
 .add-field:hover {
-    color: orange;
+    color: green;
 }
 
 /***** End Course *****/
-
-
-
-
 
 /***** Responsive Design *****/
 @media only screen and (min-width: 992px) {}

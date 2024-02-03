@@ -1,3 +1,7 @@
+<?php
+include('../config/config.php');
+header("Cache-Control: no-cache, must-revalidate");
+?>
 <!DOCTYPE html>
 <html lang="en">
 
