@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2024 at 12:54 PM
+-- Generation Time: Feb 03, 2024 at 04:43 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -56,18 +56,18 @@ CREATE TABLE `course` (
 --
 
 INSERT INTO `course` (`courseID`, `deptName`, `courseName`, `inShort`, `courseCode`, `courseCredit`, `courseType`) VALUES
-(1, 'CSE', 'Comunication Enginnering ', 'CE', 'CSE 217', '3', 'Normal'),
-(2, 'CSE', 'sfd', 'sdf', '47', '574', ''),
-(3, 'CSE', 'sdfdf', 'cse', 'CS3e 3r', '2', ''),
-(4, 'CSE', 'sfd', 'sdf', '47', '574', ''),
-(5, 'CSE', 'sdf', 'sdf', 'ss3', '0', ''),
-(6, 'CSE', 'hgf', 'cse', 'CS3e 3r', '2', ''),
-(7, 'CSE', 'eva', 'sdf', '47', '574', ''),
-(8, 'CSE', 'sce', 'sdf', 'ss3', '0', ''),
-(9, 'EEE', 'gsdag', 'sagaga', 'dsag', '0', ''),
-(10, 'SE', 'sdfsd', 'sdfsd', 'dsfdsfdsfd', '15', ''),
-(11, 'EEE', 'fds', 'dga', 'gdaga', '1.5', ''),
-(12, 'Eco', 'sdfsd', 'sdfsaf', 'sd', '1.5', '');
+(1, 'CSE', 'English I', 'English I', 'ENG 114', '3', 'Normal'),
+(2, 'CSE', 'English II', 'English II', 'ENG 115', '3', 'Normal'),
+(3, 'CSE', 'Ethics and Cyber Law', 'ECL', 'GED 119', '3', 'Normal'),
+(4, 'CSE', 'Functional Bangla', 'FB', 'GED 129', '3', 'Normal'),
+(5, 'CSE', 'Bangladesh Studies', 'BS', 'GED 201 ', '3', 'Normal'),
+(6, 'CSE', 'History of Emergence of Bangladesh', 'HEB', 'GED 202 ', '3', 'Normal'),
+(7, 'CSE', 'Principles of Economics & Entrepreneurship Development', 'PE&ED', 'GED 213', '3', 'Normal'),
+(8, 'CSE', 'Industrial Management & Financial Accounting', 'IM&FA', 'GED 215', '3', 'Normal'),
+(9, 'CSE', 'Engineering Economics', 'EE', 'GED 219', '3', 'Normal'),
+(10, 'CSE', 'Accounting', 'Accounting', 'GED 321', '3', 'Normal'),
+(11, 'CSE', 'Industrial Management ', 'IM', 'GED 421', '3', 'Normal'),
+(12, 'CSE', 'Business Communication', 'BC', 'GED 431', '3', 'Normal');
 
 -- --------------------------------------------------------
 
@@ -172,7 +172,7 @@ ALTER TABLE `room`
 -- AUTO_INCREMENT for table `course`
 --
 ALTER TABLE `course`
-  MODIFY `courseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `courseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `department`
