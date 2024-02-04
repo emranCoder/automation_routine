@@ -80,7 +80,7 @@ if (!(isset($_GET["addbatch"]) && $_GET["addbatch"] == 'true')) {
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="" class="form-label">Add Course</label>
-                                <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Type Course code (i.e. CSE 215).." list="list-courses" id="input-datalist" />
+                                <input type="text" class="form-control input-datalist" name="" id="" aria-describedby="helpId" placeholder="Type Course code (i.e. CSE 215).." list="list-courses" id="input-datalist" oninput='course(value)'/>
                                 <datalist id="list-courses">
                                     
                                 </datalist>
@@ -88,9 +88,8 @@ if (!(isset($_GET["addbatch"]) && $_GET["addbatch"] == 'true')) {
                         </div>
                     </div>
                     <div class="row">
-                        <div class="flex my-3">
-                        <span class="badge fs-6 fw-thin rounded-pill text-bg-dark py-2">Dark
-                            <span class="mx-1 ms-2 text-warning cursor-pointer"><i class="bi bi-x-circle"></i></span></span>
+                        <div class="flex my-3 overflow-y-auto codes-box">
+                       
                         </div>
                     </div>
                     </div>
