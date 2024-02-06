@@ -14,7 +14,7 @@ if (!(isset($_GET["addbatch"]) && $_GET["addbatch"] == 'true')) {
         </div>
         <div class="col-md-9">
             <div class="right-box">
-                <form action="" class="box-inside bg-white border-rounded my-4  px-5 py-3 pb-5 shadow">
+                <form action="test.php" method="post" class="box-inside bg-white border-rounded my-4  px-5 py-3 pb-5 shadow">
                     <h3 class="box-title">Add Batch</h3>
                     <div class="mb-3">
                         <label for="" class="form-label">Select Department</label>
@@ -46,7 +46,7 @@ if (!(isset($_GET["addbatch"]) && $_GET["addbatch"] == 'true')) {
                         <div class="col-md-7">
                             <label for="" class="form-label">Batch No</label>
                             <div class="mb-3">
-                                <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Batch Number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
+                                <input type="text" class="form-control" name="batchNo" id="" aria-describedby="helpId" placeholder="Batch Number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
                             </div>
                         </div>
                         <div class="col-md-5">
@@ -60,7 +60,7 @@ if (!(isset($_GET["addbatch"]) && $_GET["addbatch"] == 'true')) {
                                 </div>
                                 <div class="col-md-3">
 
-                                    <select class="form-select" name="roomType" id="">
+                                    <select class="form-select" name="sectionName" id="">
                                         <option selected>...</option>
                                         <option value="B">B</option>
                                         <option value="C">C</option>

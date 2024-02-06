@@ -1,54 +1,36 @@
 <?php
 
-
 require_once("../config/config.php");
 
-if (isset($_POST["deptName"]) &&  isset($_POST["numOfValue"]) &&  isset($_POST["array"])) {
-    $deptName = $_POST["deptName"];
-    $numOfValue = $_POST["numOfValue"];
+if(isset($_POST["batchNo"]) && isset($_POST["deptName"]) && isset($_POST["courseCode"])) {
+$batchNo = $_POST["batchNo"];
+$deptName = $_POST["deptName"];
 
-    if ($numOfValue) {
-
-        for ($i = 0; $i <=$numOfValue; $i++) {
-            if($i)
-            {
-                $data = $_POST["array" . $i];
-                $courseName = $data["'courseName'"];
-                $shortWord = $data["'shortWord'"];
-                $courseCode = $data["'courseCode'"];
-                $courseCredit = $data["'courseCredit'"];
-                $courseType = $data["'courseType'"];
-
-                $insertQuery = "INSERT INTO `course`(`deptName`, `courseName`, `inShort`, `courseCode`, `courseCredit`, `courseType`) VALUES  ('$deptName','$courseName','$shortWord','$courseCode','$courseCredit','$courseType')";
-               $result = mysqli_query($conn, $insertQuery);
-            }else
-            {
-                    $data = $_POST["array"];
-                    $courseName = $data["'courseName'"];
-                    $shortWord = $data["'shortWord'"];
-                    $courseCode = $data["'courseCode'"];
-                    $courseCredit = $data["'courseCredit'"];
-                    $courseType = $data["'courseType'"];
-                    $insertQuery = "INSERT INTO `course`(`deptName`, `courseName`, `inShort`, `courseCode`, `courseCredit`, `courseType`) VALUES  ('$deptName','$courseName','$shortWord','$courseCode','$courseCredit','$courseType')";
-                    $result = mysqli_query($conn, $insertQuery);
-            }
-              
-        }
-    } else {
-        $data = $_POST["array"];
-        $courseName = $data["'courseName'"];
-        $shortWord = $data["'shortWord'"];
-        $courseCode = $data["'courseCode'"];
-        $courseCredit = $data["'courseCredit'"];
-        $courseType = $data["'courseType'"];
-        $insertQuery = "INSERT INTO `course`(`deptName`, `courseName`, `inShort`, `courseCode`, `courseCredit`, `courseType`) VALUES  ('$deptName','$courseName','$shortWord','$courseCode','$courseCredit','$courseType')";
-        $result = mysqli_query($conn, $insertQuery);
-    }
-    if ($result) {
-        header("location: add-course.php?insert=true&&addcourse=true");
-    } else {
-        header("location: add-course.php?insert=false&&addcourse=false");
-    }
+$courseCode = $_POST["courseCode"];
+if($_POST["sectionName"]!="...")
+{
+    $sectionName = $_POST["sectionName"];
+}else
+{
+    $sectionName = "A";
 }
+
+foreach ($courseCode as $key => $value) {
+   $insertQuery = "INSERT INTO `batch`(`batchName`, `batchNo`, `section`, `courseName`) VALUES ('$deptName','$batchNo','$sectionName','$value')";
+   $result = mysqli_query($conn, $insertQuery);
+}
+if($result)
+{
+    header("Location: add-batch.php?insert=true&&addbatch=true");
+}else
+{
+    header("Location: add-batch.php?insert=false&&addbatch=true");
+}
+
+
+
+
+}
+
 
 ?>
