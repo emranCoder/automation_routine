@@ -2,14 +2,15 @@
 
 if (isset($_POST) && isset($_POST['fName']) && isset($_POST['email']) && isset($_POST['facultyNumber'])) {
     $fName = $_POST["fName"];
+    $short_name = $_POST["short_name"];
     $facultyDept = $_POST["facultyDept"];
     $facultyDesig = $_POST["facultyDesig"];
     $email = $_POST["email"];
     $facultyNumber = $_POST["facultyNumber"];
 
-    var_dump($data);
 
-    $insertQuery = "INSERT INTO `faculty`(`FirstName`, `LastName`, `designation`, `email`, `number`) VALUES ('$fName','$facultyDept','$facultyDesig','$email','$facultyNumber')";
+
+    $insertQuery = "INSERT INTO `faculty` (`FirstName`, `short_name`, `designation`, `email`, `number`,`facultyDept`) VALUES ('$fName','$short_name','$facultyDesig','$email','$facultyNumber','$facultyDept')";
 
     $result = mysqli_query($conn, $insertQuery);
     if ($result) {
@@ -76,16 +77,16 @@ if (isset($_POST) && isset($_POST['fName']) && isset($_POST['email']) && isset($
                     <div class="row">
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="" class="form-label">First Name</label>
+                                <label for="" class="form-label">Name</label>
                                 <input type="text" class="form-control" name="fName" id="" aria-describedby="helpId"
-                                    placeholder="First Name......" required="true" />
+                                    placeholder="Type Name......" required="true" />
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" name="lName" id="" aria-describedby="helpId"
-                                    placeholder="Last Name......" required="true" />
+                                <label for="" class="form-label">In Short</label>
+                                <input type="text" class="form-control" name="short_name" id="" aria-describedby="helpId"
+                                    placeholder="Type short from......" required="true" />
                             </div>
                         </div>
                     </div>
@@ -117,7 +118,7 @@ if (isset($_POST) && isset($_POST['fName']) && isset($_POST['email']) && isset($
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="" class="form-label">Faculty Designation</label>
-                                <input type="text" class="form-control" name="facultyDesig" id=""
+                                <input type="text" value="N/A" class="form-control" name="facultyDesig" id=""
                                     aria-describedby="helpId" placeholder="Type Faculty Designation......"
                                     required="true" />
                             </div>
@@ -128,6 +129,7 @@ if (isset($_POST) && isset($_POST['fName']) && isset($_POST['email']) && isset($
 
                         <div class="input-group mb-3">
                             <input type="email" class="form-control" name="email" id="" aria-describedby="helpId"
+                            value="facultyemail@mail.com"
                                 placeholder="facultyemail@mail.com" required="true" />
                             <span class="input-group-text" id="basic-addon1">@</span>
                         </div>
@@ -135,6 +137,7 @@ if (isset($_POST) && isset($_POST['fName']) && isset($_POST['email']) && isset($
                     <div class="mb-3">
                         <label for="" class="form-label">Faculty Number</label>
                         <input type="tel" class="form-control" name="facultyNumber" id="" aria-describedby="helpId"
+                        value="+8801422"
                             placeholder="+880......." required="true"
                             onkeypress="return event.charCode >= 48 && event.charCode <= 57" />
                     </div>

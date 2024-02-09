@@ -31,7 +31,73 @@
 
         let x = 1
         $(".add-field").click(() => {
-            $("#field").append(`<div class="row gap-0" style="--bs-gap: 0rem; --bs-gutter-x:5px"><div class="col-md-4"><div class="mb-3"><input type="text" class="form-control" name="array` + x + `['courseName']" id="" aria-describedby="helpId" placeholder="Course Name"  required/></div></div><div class="col-md-2"><div class="mb-3"><input type="text" class="form-control" name="array` + x + `['shortWord']" id="" aria-describedby="helpId" placeholder="In Short Word"  required/></div></div><div class="col-md-2"><div class="mb-3"><input type="text" class="form-control" name="array` + x + `['courseCode']" id="" aria-describedby="helpId" placeholder="Course Code"  required/></div></div><div class="col-md-2"><div class="mb-3"><input type="text" class="form-control" name="array` + x + `['courseCredit']" id="" aria-describedby="helpId" placeholder="Course Credit"  required/></div></div><div class="col-md-2"><div class="mb-3"><select class="form-select" name="array` + x + `['courseType']" id="" required><option selected>Type</option><option>Normal</option><option value="">Project</option><option value="">Lab</option><option value="">Special</option></select></div></div></div>`)
+            $("#field").append(`<div class="row gap-0" style="--bs-gap: 0rem; --bs-gutter-x:5px">
+                     
+                     <div class="col-md-2">
+                     <div class="mb-3">
+                         <select
+                             class="form-select "
+                             name="array['facultyName']"
+                             id=""
+                         >
+                         <option>Faculty</option>
+                         <option value="N/A">N/A</option>
+                         <?php
+                         $selectQuery = "SELECT short_name  FROM `faculty`";
+                         $result = mysqli_query($conn, $selectQuery);
+                         $numRows = mysqli_num_rows($result);
+                         if ($numRows) {
+                             while ($row = mysqli_fetch_assoc($result)) {
+
+                                 $shortForm = $row["short_name"];
+                                 echo '<option value="' . $shortForm . '">' . $shortForm . '</option>';
+                             }
+                         } else {
+                             echo '<option class="text-danger">Insert faculty First</option>';
+                         }
+
+                         ?>
+                        
+                         </select>
+                     </div>
+                     </div>
+                     
+                         <div class="col-md-3">
+                             <div class="mb-3">
+                                 <input type="text" class="form-control" name="array['courseName']" id=""
+                                     aria-describedby="helpId" placeholder="Course Name" required />
+                             </div>
+                         </div>
+                         <div class="col-md-2">
+                             <div class="mb-3">
+                                 <input type="text" class="form-control" name="array['shortWord']" id=""
+                                     aria-describedby="helpId" placeholder="In Short Word" required />
+                             </div>
+                         </div>
+                         <div class="col-md-2">
+                             <div class="mb-3">
+                                 <input type="text" class="form-control" name="array['courseCode']" id=""
+                                     aria-describedby="helpId" placeholder="Course Code" required />
+                             </div>
+                         </div>
+                         <div class="col-md-1">
+                             <div class="mb-3">
+                                 <input type="text" class="form-control" name="array['courseCredit']" id="textNumberValidate"                                   aria-describedby="helpId" placeholder="Credit" required
+                                     />
+                             </div>
+                         </div>
+                         <div class="col-md-2">
+                             <div class="mb-3">
+                                 <select class="form-select" name="array['courseType']" id="" required>
+                                     <option selected>Type</option>
+                                     <option>Normal</option>
+                                     <option value="">Project</option>
+                                     <option value="">Lab</option>
+                                     <option value="">Special</option>
+                                 </select>
+                             </div>
+                         </div>
+                     </div>`)
             $("#numOfValue").val(x);
             x++;
         });

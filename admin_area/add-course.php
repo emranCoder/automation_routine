@@ -4,6 +4,8 @@ include("Header.php");
 if (isset($_POST["deptName"]) && isset($_POST["numOfValue"]) && isset($_POST["array"])) {
     $deptName = $_POST["deptName"];
     $numOfValue = $_POST["numOfValue"];
+    $batchNo = $_POST["batchNo"];
+    $sectionName = $_POST["sectionName"];
 
     if ($numOfValue) {
 
@@ -15,8 +17,9 @@ if (isset($_POST["deptName"]) && isset($_POST["numOfValue"]) && isset($_POST["ar
                 $courseCode = $data["'courseCode'"];
                 $courseCredit = $data["'courseCredit'"];
                 $courseType = $data["'courseType'"];
+                $facultyName = $data["'facultyName'"];
 
-                $insertQuery = "INSERT INTO `course`(`deptName`, `courseName`, `inShort`, `courseCode`, `courseCredit`, `courseType`) VALUES  ('$deptName','$courseName','$shortWord','$courseCode','$courseCredit','$courseType')";
+                $insertQuery = "INSERT INTO `course`(`deptName`, `courseName`, `inShort`, `courseCode`, `courseCredit`, `courseType`,`facultyName`,`batchNo`,`sectionName`) VALUES  ('$deptName','$courseName','$shortWord','$courseCode','$courseCredit','$courseType','$facultyName','$batchNo','$sectionName')";
                 $result = mysqli_query($conn, $insertQuery);
             } else {
                 $data = $_POST["array"];
@@ -25,7 +28,8 @@ if (isset($_POST["deptName"]) && isset($_POST["numOfValue"]) && isset($_POST["ar
                 $courseCode = $data["'courseCode'"];
                 $courseCredit = $data["'courseCredit'"];
                 $courseType = $data["'courseType'"];
-                $insertQuery = "INSERT INTO `course`(`deptName`, `courseName`, `inShort`, `courseCode`, `courseCredit`, `courseType`) VALUES  ('$deptName','$courseName','$shortWord','$courseCode','$courseCredit','$courseType')";
+                $facultyName = $data["'facultyName'"];
+                $insertQuery = "INSERT INTO `course`(`deptName`, `courseName`, `inShort`, `courseCode`, `courseCredit`, `courseType`,`facultyName`,`batchNo`,`sectionName`) VALUES  ('$deptName','$courseName','$shortWord','$courseCode','$courseCredit','$courseType','$facultyName','$batchNo','$sectionName')";
                 $result = mysqli_query($conn, $insertQuery);
             }
         }
@@ -64,46 +68,41 @@ if (isset($_POST["deptName"]) && isset($_POST["numOfValue"]) && isset($_POST["ar
                 <!-- ========== Start Toast ========== -->
                 <?php
                 if (isset($_GET["insert"]) && $_GET["insert"] === "true") {
-                    ?>
+                ?>
 
-                    <difv class="toast fade show toast-custom align-items-center bd-callout-warning bd-callout" role="alert"
-                        aria-live="assertive" aria-atomic="true" bs-autohide="true" autohide="true">
+                    <difv class="toast fade show toast-custom align-items-center bd-callout-warning bd-callout" role="alert" aria-live="assertive" aria-atomic="true" bs-autohide="true" autohide="true">
                         <div class="d-flex">
                             <div class="toast-body text-dark fw-semibold">
                                 Successfully! Course Add
                             </div>
-                            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                         </div>
                     </difv>
-                    <?php
+                <?php
                 } else if (isset($_GET['insert']) && $_GET['insert'] === "false") {
-                    ?>
+                ?>
 
-                        <div class="toast fade show toast-custom align-items-center bd-callout-warning bd-callout" role="alert"
-                            aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
-                            <div class="d-flex">
-                                <div class="toast-body text-danger fw-semibold">
-                                    Opps! Something Wrong
-                                </div>
-                                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
-                                    aria-label="Close"></button>
+                    <div class="toast fade show toast-custom align-items-center bd-callout-warning bd-callout" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">
+                        <div class="d-flex">
+                            <div class="toast-body text-danger fw-semibold">
+                                Opps! Something Wrong
                             </div>
+                            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
                         </div>
+                    </div>
 
-                    <?php
+                <?php
                 }
                 ?>
                 <!-- ========== End Toast ========== -->
 
 
 
-                <form action="add-course.php" method="POST"
-                    class="box-inside bg-white border-rounded my-4  px-5 py-3 pb-5 shadow">
+                <form action="add-course.php" method="POST" class="box-inside bg-white border-rounded my-4  px-5 py-3 pb-5 shadow">
                     <h3 class="box-title">Add Course</h3>
                     <div class="mb-3">
                         <label for="" class="form-label">Select Department</label>
-                        <select class="form-select" name="deptName" id="" required>
+                        <select class="form-select " name="deptName" id="" required>
                             <option>Choose Department</option>
                             <?php
                             $selectQuery = "SELECT deptID,inShort  FROM `department`";
@@ -121,32 +120,68 @@ if (isset($_POST["deptName"]) && isset($_POST["numOfValue"]) && isset($_POST["ar
 
                             ?>
                         </select>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-7">
+                            <label for="" class="form-label">Batch No</label>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="batchNo" id="" aria-describedby="helpId" placeholder="Batch Number" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required/>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <label for="" class="form-label">Section</label>
+                                    <input type="text" class="form-control" name="sectionName" id="" aria-describedby="helpId" placeholder="Type Section Name" onkeypress="return event.charCode >= 65 && event.charCode <= 91" required/>
+                        </div>
                     </div>
                     <input value="" name='numOfValue' type="text" id="numOfValue" hidden class="hidden ">
                     <div id="field">
                         <div class="row gap-0" style="--bs-gap: 0rem; --bs-gutter-x:5px">
-                            <div class="col-md-4">
+
+                            <div class="col-md-2">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="array['courseName']" id=""
-                                        aria-describedby="helpId" placeholder="Course Name" required />
+                                    <select class="form-select " name="array['facultyName']" id="">
+                                        <option>Faculty</option>
+                                        <option value="TBA">TBA</option>
+                                        <?php
+                                        $selectQuery = "SELECT short_name  FROM `faculty`";
+                                        $result = mysqli_query($conn, $selectQuery);
+                                        $numRows = mysqli_num_rows($result);
+                                        if ($numRows) {
+                                            while ($row = mysqli_fetch_assoc($result)) {
+
+                                                $shortForm = $row["short_name"];
+                                                echo '<option value="' . $shortForm . '">' . $shortForm . '</option>';
+                                            }
+                                        } else {
+                                            echo '<option class="text-danger">Insert faculty First</option>';
+                                        }
+
+                                        ?>
+
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="array['courseName']" id="" aria-describedby="helpId" placeholder="Course Name" required />
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="array['shortWord']" id=""
-                                        aria-describedby="helpId" placeholder="In Short Word" required />
+                                    <input type="text" class="form-control" name="array['shortWord']" id="" aria-describedby="helpId" placeholder="In Short Word" required />
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="array['courseCode']" id=""
-                                        aria-describedby="helpId" placeholder="Course Code" required />
+                                    <input type="text" class="form-control" name="array['courseCode']" id="" aria-describedby="helpId" placeholder="Course Code" required />
                                 </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="array['courseCredit']" id="textNumberValidate"                                   aria-describedby="helpId" placeholder="Course Credit" required
-                                        />
+                                    <input type="text" class="form-control" name="array['courseCredit']" id="textNumberValidate" aria-describedby="helpId" placeholder="Credit" required />
                                 </div>
                             </div>
                             <div class="col-md-2">
@@ -172,6 +207,7 @@ if (isset($_POST["deptName"]) && isset($_POST["numOfValue"]) && isset($_POST["ar
                             </span>
                         </div>
                     </div>
+
                     <button type="submit" class="btn btn-primary mt-3">
                         GO <i class="bi bi-arrow-bar-right"></i>
                     </button>
