@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 03, 2024 at 07:10 PM
+-- Generation Time: Feb 09, 2024 at 06:05 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -35,6 +35,60 @@ CREATE TABLE `batch` (
   `courseName` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `batch`
+--
+
+INSERT INTO `batch` (`batchID`, `batchName`, `batchNo`, `section`, `courseName`) VALUES
+(1, 'CSE', '57', '...', 'CSE401'),
+(2, 'CSE', '57', '...', 'CSE402'),
+(3, 'CSE', '57', '...', 'cse441'),
+(4, 'CSE', '57', '...', 'CSE442'),
+(5, 'CSE', '57', '...', 'CSE435'),
+(6, 'CSE', '57', '...', 'cse436'),
+(7, 'CSE', '57', '...', 'cse429'),
+(8, 'CSE', '52', '...', 'CSE421'),
+(9, 'CSE', '52', '...', 'cse422'),
+(10, 'CSE', '52', '...', 'CSE441'),
+(11, 'CSE', '52', '...', 'cse429'),
+(12, 'CSE', '52', '...', 'CSE469'),
+(13, 'CSE', '52', '...', 'CSE470'),
+(14, 'CSE', '53', 'A', 'CSE421'),
+(15, 'CSE', '53', 'A', 'CSE422'),
+(16, 'CSE', '53', 'A', 'CSE321'),
+(17, 'CSE', '53', 'A', 'CSE322'),
+(18, 'CSE', '53', 'A', 'CSE441'),
+(19, 'CSE', '53', 'A', 'CSE442'),
+(20, 'CSE', '53', 'A', 'GED119'),
+(21, 'CSE', '53', 'A', 'CSE429'),
+(22, 'CSE', '53', 'A', 'CSE469'),
+(23, 'CSE', '53', 'A', 'CSE470'),
+(24, 'CSE', '54', 'A', 'CSE321'),
+(25, 'CSE', '54', 'A', 'CSE322'),
+(26, 'CSE', '54', 'A', 'CSE441'),
+(27, 'CSE', '54', 'A', 'CSE442'),
+(28, 'CSE', '54', 'A', 'GED119'),
+(29, 'CSE', '54', 'A', 'CSE429'),
+(30, 'CSE', '54', 'A', 'GED202'),
+(31, 'CSE', '54', 'A', 'CSE469'),
+(32, 'CSE', '54', 'A', 'CSE470'),
+(33, 'CSE', '55', 'A', 'GED119'),
+(34, 'CSE', '55', 'A', 'GED202'),
+(35, 'CSE', '55', 'A', 'CSE311'),
+(36, 'CSE', '55', 'A', 'CSE312'),
+(37, 'CSE', '55', 'A', 'CSE321'),
+(38, 'CSE', '55', 'A', 'CSE322'),
+(39, 'CSE', '55', 'A', 'GED431'),
+(40, 'CSE', '55', 'A', 'CSE417'),
+(41, 'CSE', '55', 'A', 'CSE418'),
+(42, 'CSE', '56', 'D', 'CSE323'),
+(43, 'CSE', '56', 'D', 'CSE300'),
+(44, 'CSE', '56', 'D', 'CSE215'),
+(45, 'CSE', '56', 'D', 'CSE237'),
+(46, 'CSE', '56', 'D', 'CSE238'),
+(47, 'CSE', '56', 'D', 'MAT235'),
+(48, 'CSE', '56', 'D', 'GED215');
+
 -- --------------------------------------------------------
 
 --
@@ -48,101 +102,11 @@ CREATE TABLE `course` (
   `inShort` varchar(255) DEFAULT NULL,
   `courseCode` varchar(255) DEFAULT NULL,
   `courseCredit` varchar(255) NOT NULL,
-  `courseType` varchar(255) DEFAULT NULL
+  `courseType` varchar(255) DEFAULT NULL,
+  `facultyName` varchar(255) NOT NULL,
+  `batchNo` int(11) NOT NULL,
+  `sectionName` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `course`
---
-
-INSERT INTO `course` (`courseID`, `deptName`, `courseName`, `inShort`, `courseCode`, `courseCredit`, `courseType`) VALUES
-(1, 'CSE', 'English I', 'English I', 'ENG 114', '3', 'Normal'),
-(2, 'CSE', 'English II', 'English II', 'ENG 115', '3', 'Normal'),
-(3, 'CSE', 'Ethics and Cyber Law', 'ECL', 'GED 119', '3', 'Normal'),
-(4, 'CSE', 'Functional Bangla', 'FB', 'GED 129', '3', 'Normal'),
-(5, 'CSE', 'Bangladesh Studies', 'BS', 'GED 201 ', '3', 'Normal'),
-(6, 'CSE', 'History of Emergence of Bangladesh', 'HEB', 'GED 202', '3', 'Normal'),
-(7, 'CSE', 'Principles of Economics & Entrepreneurship Development', 'PE&ED', 'GED 213', '3', 'Normal'),
-(8, 'CSE', 'Industrial Management & Financial Accounting', 'IM&FA', 'GED 215', '3', 'Normal'),
-(9, 'CSE', 'Engineering Economics', 'EE', 'GED 219', '3', 'Normal'),
-(10, 'CSE', 'Accounting', 'Accounting', 'GED 321', '3', 'Normal'),
-(11, 'CSE', 'Industrial Management', 'IM', 'GED 421', '3', 'Normal'),
-(13, 'CSE', 'Physics I', 'Physics-I ', 'PHY 111', '3', 'Normal'),
-(14, 'CSE', 'Physics II', 'Physics-II', 'PHY 124 ', '3', 'Normal'),
-(15, 'CSE', 'Differential & Integral Calculus ', 'D&IC', 'MAT 112 ', '3', 'Normal'),
-(16, 'CSE', 'Differential Equation & Laplace Transform', 'DE&LT', 'MAT 123 ', '3', 'Normal'),
-(17, 'CSE', 'Matrices, Complex Variable & Fourier Analysis', 'MCV&FA', 'MAT 135 ', '3', 'Normal'),
-(18, 'CSE', 'Basic Statistics & Probability ', 'BS&P', 'STA 215 ', '3', 'Normal'),
-(19, 'CSE', 'Geometry & Vector Analysis', 'G&VA', 'MAT 216 ', '3', 'Normal'),
-(20, 'CSE', 'Numerical Methods ', 'NM', 'MAT 235 ', '3', 'Normal'),
-(21, 'CSE', 'Structured Programming', 'SP', 'CSE 121', '3', 'Normal'),
-(22, 'CSE', 'Structured Programming Lab', 'SP Lab', 'CSE 122', '1.5', 'Lab'),
-(23, 'CSE', 'Basic Electrical Engineering', 'BEE-I', 'CSE 123', '3', 'Normal'),
-(24, 'CSE', 'Basic Electrical Engineering Lab', 'BEE-I Lab', 'CSE 124', '1.5', 'Lab'),
-(25, 'CSE', 'Discrete Mathematics', 'DM', 'CSE 125', '3', 'Normal'),
-(26, 'CSE', 'Basic Electrical and Electronic Engineering', 'BE&EE', 'CSE 127', '3', 'Normal'),
-(27, 'CSE', 'Basic Electrical and Electronic Engineering Lab', 'BE&EE Lab', 'CSE 128', '1.5', 'Lab'),
-(28, 'CSE', 'Basic Electronics Engineering', 'BEE-II', 'CSE 131', '3', 'Normal'),
-(29, 'CSE', 'Basic Electronics Engineering Lab', 'BEE-II Lab', 'CSE 132', '1.5', 'Lab'),
-(30, 'CSE', 'Data Structure', 'DS', 'CSE 133', '3', 'Normal'),
-(31, 'CSE', 'Data Structure Lab', 'DS Lab', 'CSE 134', '1.5', 'Lab'),
-(32, 'CSE', 'Competitive Programming', 'CP', 'CSE 200', '3', 'Normal'),
-(33, 'CSE', 'Digital Logic Design', 'DLD', 'CSE 211', '3', 'Normal'),
-(34, 'CSE', 'Digital Logic Design Lab', 'DLD Lab', 'CSE 212', '1.5', 'Lab'),
-(35, 'CSE', 'Computer Organization & Architecture', 'CO&A', 'CSE 213', '3', 'Normal'),
-(36, 'CSE', 'Communication Engineering', 'CE', 'CSE 215', '3', 'Normal'),
-(37, 'CSE', 'Object Oriented Programming', 'OOP', 'CSE 221', '3', 'Normal'),
-(38, 'CSE', 'Object Oriented Programming Lab', 'OOP Lab', 'CSE 222', '1.5', 'Lab'),
-(39, 'CSE', 'Database Management System', 'DBMS', 'CSE 223', '3', 'Normal'),
-(40, 'CSE', 'Database Management System Lab', 'DBMS Lab', 'CSE 224', '1.5', 'Lab'),
-(41, 'CSE', 'Algorithm', 'Algorithm', 'CSE 231', '3', 'Normal'),
-(42, 'CSE', 'Algorithm Lab', 'Algorithm Lab', 'CSE 232', '1.5', 'Lab'),
-(43, 'CSE', 'Microprocessor & Interfacing', 'M&I', 'CSE 237', '3', 'Normal'),
-(44, 'CSE', 'Microprocessor and Interfacing Lab', 'M&I Lab', 'CSE 238', '1.5', 'Lab'),
-(45, 'CSE', 'Project', 'Project', 'CSE 300', '1.5', 'Project'),
-(46, 'CSE', 'Computer Networks', 'CN', 'CSE 311', '3', 'Normal'),
-(47, 'CSE', 'Computer Networks Lab', 'CN Lab', 'CSE 312', '1.5', 'Lab'),
-(48, 'CSE', 'Operating System', 'OS', 'CSE 321', '3', 'Normal'),
-(49, 'CSE', 'Operating System Lab', 'OS Lab', 'CSE 322', '1.5', 'Lab'),
-(50, 'CSE', 'Web Programming', 'WP', 'CSE 323', '3', 'Lab'),
-(51, 'CSE', 'Theory of Computation', 'TC', 'CSE 327', '3', 'Normal'),
-(52, 'CSE', 'Compiler Construction', 'CC', 'CSE 415', '3', 'Normal'),
-(53, 'CSE', 'Compiler Construction Lab', 'CC Lab', 'CSE 416', '1.5', 'Lab'),
-(54, 'CSE', 'Software Engineering & Design Pattern', 'SWE&EP', 'CSE 417', '3', 'Normal'),
-(55, 'CSE', 'Software Engineering & Design Pattern Lab', 'SWE&DP Lab', 'CSE 418', '1.5', 'Lab'),
-(56, 'CSE', 'Artificial Intelligence', 'AI', 'CSE 421', '3', 'Normal'),
-(57, 'CSE', 'Artificial Intelligence lab', 'AI Lab', 'CSE 422', '1.5', 'Lab'),
-(58, 'CSE', 'Introduction to Data Science', 'IDS', 'CSE 427', '3', 'Normal'),
-(59, 'CSE', 'Introduction to Data Science Lab', 'IDS Lab', 'CSE 428', '1.5', 'Lab'),
-(60, 'CSE', 'Final Year Project', 'FYP', 'CSE 436', '3', 'Project'),
-(61, 'CSE', 'Computer Graphics & Image Processing', 'CG&IP', 'CSE 401', '3', 'Normal'),
-(62, 'CSE', 'Computer Graphics & Image Processing Lab', 'CG&IP Lab', 'CSE 402', '1.5', 'Lab'),
-(63, 'CSE', 'Embedded System Design', 'ESD', 'CSE 403', '3', 'Normal'),
-(64, 'CSE', 'Embedded System Design Lab', 'ESD Lab', 'CSE 404', '1.5', 'Lab'),
-(65, 'CSE', 'Optical Communication', 'OC', 'CSE 413', '3', 'Normal'),
-(66, 'CSE', 'Optical Communication Lab', 'OC Lab', 'CSE 414', '1.5', 'Lab'),
-(67, 'CSE', 'Neural Network', 'NN', 'CSE 425', '3', 'Normal'),
-(68, 'CSE', 'Neural Network Lab', 'NN Lab', 'CSE 426', '1.5', 'Lab'),
-(69, 'CSE', 'LSI Design', 'LSID', 'CSE 431', '3', 'Normal'),
-(70, 'CSE', 'VLSI Design Lab', 'VLSID Lab', 'CSE 432', '1.5', 'Lab'),
-(71, 'CSE', 'Digital Signal Processing', 'DSP', 'CSE 441', '3', 'Normal'),
-(72, 'CSE', 'Digital Signal Processing Lab', 'DSP Lab', 'CSE 442', '1.5', 'Lab'),
-(73, 'CSE', 'Natural Language Processing', 'NLP', 'CSE 443', '3', 'Normal'),
-(74, 'CSE', 'Natural Language Processing Lab', 'NLP Lab', 'CSE 444', '1.5', 'Lab'),
-(75, 'CSE', 'Cloud Computing', 'CC', 'CSE 453', '3', 'Normal'),
-(76, 'CSE', 'Cloud Computing Lab', 'CC Lab', 'CSE 454', '3', 'Normal'),
-(77, 'CSE', 'Contemporary Course on Computer Science', 'CCCS ', 'CSE 455', '3', 'Normal'),
-(78, 'CSE', 'Contemporary Course Lab on Computer Science', 'CCCS Lab', 'CSE 456', '1.5', 'Lab'),
-(79, 'CSE', 'Parallel Processing', 'PP', 'CSE 457', '3', 'Normal'),
-(80, 'CSE', 'Parallel Processing Lab', 'PP Lab', 'CSE 458', '1.5', 'Lab'),
-(81, 'CSE', 'Advanced Database System', 'ADBS', 'CSE 463', '3', 'Normal'),
-(82, 'CSE', 'Advanced Database System Lab', 'ADBS  Lab', 'CSE 464', '1.5', 'Lab'),
-(83, 'CSE', 'Digital Image Processing', 'DIP', 'CSE 465', '3', 'Normal'),
-(84, 'CSE', 'Digital Image Processing Lab', 'DIP Lab', 'CSE 466', '1.5', 'Lab'),
-(85, 'CSE', 'Bioinformatics Computing', 'BC', 'CSE 469', '3', 'Normal'),
-(86, 'CSE', 'Bioinformatics Computing Lab', 'BC Lab', 'CSE 470', '1.5', 'Lab'),
-(87, 'CSE', 'Machine Learning', 'ML', 'CSE 471', '3', 'Normal'),
-(88, 'CSE', 'Machine Learning Lab', 'ML Lab', 'CSE 472', '1.5', 'Lab');
 
 -- --------------------------------------------------------
 
@@ -179,11 +143,67 @@ INSERT INTO `department` (`deptID`, `deptName`, `inShort`, `numOfStudent`) VALUE
 CREATE TABLE `faculty` (
   `facultyID` int(11) NOT NULL,
   `FirstName` varchar(255) DEFAULT NULL,
-  `LastName` varchar(255) DEFAULT NULL,
+  `short_name` varchar(255) DEFAULT NULL,
   `designation` varchar(255) DEFAULT NULL,
   `email` varchar(255) DEFAULT NULL,
-  `number` varchar(255) DEFAULT NULL
+  `number` varchar(255) DEFAULT NULL,
+  `facultyDept` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `faculty`
+--
+
+INSERT INTO `faculty` (`facultyID`, `FirstName`, `short_name`, `designation`, `email`, `number`, `facultyDept`) VALUES
+(1, 'Prof. Dr. Nazrul Haque Chowdhury', 'NHC', 'Prof.', 'facultyemail@mail.com', '+8801422', 'CSE'),
+(2, 'Prof. Choudhury Mukammel Wahid', 'CMW', 'Prof.', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(3, 'Md. Mahfujul Hasan', 'MMH', 'Lecturer', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(4, 'Md. Mushtaq Shahriyar Rafee', 'MSR', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(5, 'Nurul Afsar Mahmud Bhuiyan', 'NAB', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(6, 'Archi Arani Basak', 'AAB', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(7, 'Tajkia Nuri Ananna', 'TNA', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(8, 'Nabila Zannat Rifa', 'NZR', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(9, 'Md Shamihul Islam Khan Limon', 'MSI', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(10, 'Safwan Uddin Ahmed', 'SUA', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(11, 'Khudeja Khanom Anwara', 'KKA', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(12, 'Mahdi Islam', 'MI', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(13, 'Nasif Istiak Remon', 'NIR', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(14, 'Akif Mahdi', 'AM', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(15, 'Abu Jafar Md. Jakaria', 'AJMJ', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(16, 'Mayami Das Purkayastha Purba', 'MDP', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(17, 'Dr. Rajarshi Roy Chowdhury', 'RRC', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(18, 'Rishad Amin Pulok', 'RA', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(19, 'Bushra Azmat Hussain', 'BAH', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(20, 'Syed Imam Mahdi', 'SMM', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(21, 'Chowdhury Mujaddid Ahmed', 'CMA', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(22, 'Salma Akhter', 'SA', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(23, 'Md. Fahim Kabir Chowdhury', 'FKC', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(24, 'Iftekhar Hussain', 'IH', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(25, 'Nourush Jahan (ECO)', 'NJ', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(26, 'Taspiea Mostofa (LLB)', 'TM', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(27, 'Farhana Khanom Joly (ENG)', 'FKJ', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(28, 'Munmun Debnath(ENG)', 'MD', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(29, 'Tanjim Nishat Farmi(ENG)', 'TNF', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(30, 'Abdullah Al Mashud(ENG)', 'AAM', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(31, 'Must Ayesha Shahrin(BA)', 'MAS', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(32, 'Nafisa Ahmed(EEE)', 'NFA', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(33, 'Kazi Wohiduzzaman(EEE)', 'KWZ', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(34, 'Bishal Das(EEE)', 'BD', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(35, 'MD. Anwarul Kawsar(EEE)', 'MAK', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(36, 'Md. Afsarul Islam', 'MAI', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(37, 'Dr. Urmee Ghose', 'UG', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(38, 'Syeda Nazmur Siha Muna', 'SNSM', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(39, 'Syed Nakib Sadi (ENG)', 'SNS', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(40, 'Mia Mohammad Asaduzzaman(EEE)', 'MMA', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(41, 'MD. Fahmidur Rahman Sakib', 'FRS', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(42, 'Muhammad Muzammil', 'MMZ', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(43, 'Miss Arpita Majumder(EEE)', 'AMD', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(44, 'Mr. Zahidul Salman(EEE)', 'ZS', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(45, 'Mr. Mahim Ahmed', 'MA', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(46, 'Nawshad Ahmed Chowdhury', 'NAC', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(47, 'Sadman Sakib', 'SS', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(48, 'Shanjida Khanom', 'SK', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department'),
+(49, 'Tohura Khatun', 'TK', 'N/A', 'facultyemail@mail.com', '+8801422', 'Choose Department');
 
 -- --------------------------------------------------------
 
@@ -197,13 +217,6 @@ CREATE TABLE `room` (
   `capacity` int(255) DEFAULT NULL,
   `roomType` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `room`
---
-
-INSERT INTO `room` (`roomID`, `roomNo`, `capacity`, `roomType`) VALUES
-(1, 205, 50, 'Normal');
 
 --
 -- Indexes for dumped tables
@@ -238,6 +251,12 @@ ALTER TABLE `room`
 --
 
 --
+-- AUTO_INCREMENT for table `batch`
+--
+ALTER TABLE `batch`
+  MODIFY `batchID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+
+--
 -- AUTO_INCREMENT for table `department`
 --
 ALTER TABLE `department`
@@ -247,13 +266,13 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `facultyID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `facultyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
-  MODIFY `roomID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `roomID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
